@@ -28,6 +28,8 @@ a.nav-link {
 a.navbar-brand {
     margin-left: 80px; 
     color: white;
+    font-family: 'Righteous', cursive;
+    font-size: 38px;
 }
 
 .form-inline {
