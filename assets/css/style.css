@@ -1,6 +1,8 @@
-#buttons-view {
-    margin-top: 100px;
+.articleImg {
+    height: 100px;
+    width: 100px;
 }
+
 
 #giphyLogo {
     height: 30px;
@@ -33,3 +35,9 @@ a.navbar-brand {
 .form-inline {
     margin-right: 80px;
 }
+
+.headlineImg {
+    height: 250px;
+    width: 250px;
+}
+
