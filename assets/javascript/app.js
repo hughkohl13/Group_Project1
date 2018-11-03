@@ -1,24 +1,6 @@
 // FUNCTIONAL PROGRAMMING
 $(document).ready(function() {
 
-// var news = $("#news");
-// var weather = $("#mainNews");
-
-
-// var queryGiphyURL = "https://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-//  // wikipedia api
-// queryWikiURL = "https://en.wikipedia.org/api/rest_v1/page/summary/Cat";
-
-// // google news api
-
-// //NYT 
-// var APIKey =  "20d92dce4276454fb20182dad5157970";
-// var queryNYTURL = "https://www.nytimes.com";
-
-// //NYT top stories
-// var queryNYTURL2 = "http://api.nytimes.com/svc/topstories/v2/{section}.{response-format}?api-key={your-api-key}";
-
 // NEWS API 
 const NEWS_API_EVERYTHING = "https://newsapi.org/v2/everything?";
 
@@ -69,5 +51,5 @@ function formatDateForNewsAPI(date) {
     return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
 }
 
-publishNews(document.getElementById("news"), "bitcoin");
+publishNews(document.getElementsByClassName("newsSection"), "bitcoin");
 });
