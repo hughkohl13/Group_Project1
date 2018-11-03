@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Group Project</title>
+</head>
+
+<body>
+  <!-- Retrieved data will be dumped here -->
+  <form>
+      <input type ="text" id="place-input">
+      <button id="place-search">Search Now</button>
+  </form>   
+  <div class="city"></div>
+  <div class="wind"></div>
+  <div class="humidity"></div>
+  <div class="temp"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // This is our API key
+    
+    function searchPlaceWeather(place) {
+        var APIKey = "166a433c57516f51dfab1f7edaed8413";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + APIKey;    
+
+    // Here we run our AJAX call to the OpenWeatherMap API
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+        })
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            // Log the queryURL
+            console.log(queryURL);
+            // Log the resulting object
+            console.log(response);
+            // Transfer content to HTML
+            $(".city").html("<h1>" + response.name + ", " + response.sys.country + " Weather Details</h1>");
+            $(".wind").text("Wind Speed: " + response.wind.speed);
+            $(".humidity").text("Humidity: " + response.main.humidity);
+                // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
+        var Fahrenheit = (response.main.temp - 273.15) * 1.80 + 32;
+        console.log(Fahrenheit);
+            $(".temp").text("Temperature (F) " + Fahrenheit);
+
+            // Log the data in the console as well
+            console.log("Wind Speed: " + response.wind.speed);
+            console.log("Humidity: " + response.main.humidity);
+            console.log("Temperature (F): " + response.main.temp);
+        });
+    };
+
+    $("#place-search").on("click", function(event) {
+        event.preventDefault();
+        var inputPlace = $("#place-input").val().trim();
+        searchPlaceWeather(inputPlace);
+    });
+  </script>
+</body>
+
+</html>
