@@ -1,12 +1,4 @@
-.articleImg {
-    height: 100px;
-    width: 100px;
-}
 
-
-#giphyLogo {
-    height: 30px;
-}
 
 
 /* Navbar WB */
@@ -30,14 +22,22 @@ a.nav-link {
 a.navbar-brand {
     margin-left: 80px; 
     color: white;
+    font-family: 'Righteous', cursive;
+    font-size: 38px;
 }
 
+/*search bar*/
 .form-inline {
     margin-right: 80px;
 }
 
+/* images from articles */
 .headlineImg {
     height: 250px;
     width: 250px;
 }
 
+.articleImg {
+    height: 200px;
+    width: 200px;
+}
