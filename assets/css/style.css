@@ -30,14 +30,21 @@ a.nav-link {
 a.navbar-brand {
     margin-left: 80px; 
     color: white;
+    font-family: 'Righteous', cursive;
+    font-size: 38px;
 }
 
+/*search bar*/
 .form-inline {
     margin-right: 80px;
 }
 
+<<<<<<< HEAD
+/* End of Navbar WB */
+=======
 .headlineImg {
     height: 250px;
     width: 250px;
 }
 
+>>>>>>> a528d739a8bb7563835b2a33c5c2073b617cc0bf
