@@ -1,12 +1,4 @@
-.articleImg {
-    height: 100px;
-    width: 100px;
-}
 
-
-#giphyLogo {
-    height: 30px;
-}
 
 /* Navbar WB */
 .navbar.navbar-default {
@@ -50,3 +42,15 @@ a.navbar-brand {
 
 
 /* End of Navbar WB */
+=======
+/* images from articles */
+.headlineImg {
+    height: 250px;
+    width: 250px;
+}
+
+.articleImg {
+    height: 200px;
+    width: 200px;
+}
+
