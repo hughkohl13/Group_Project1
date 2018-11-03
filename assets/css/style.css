@@ -5,3 +5,31 @@
 #giphyLogo {
     height: 30px;
 }
+
+
+/* Navbar WB */
+.navbar.navbar-default {
+    background-color: #bee8eb;
+}
+
+/*navbar link*/
+a.nav-link {
+    color: black;
+    margin-left: 20px;
+
+}
+
+/*nav main*/
+.nav-link {
+    margin-left: 80px;
+}
+
+/*navbar brand*/
+a.navbar-brand {
+    margin-left: 80px; 
+    color: white;
+}
+
+.form-inline {
+    margin-right: 80px;
+}
