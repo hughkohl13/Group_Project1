@@ -1,6 +1,8 @@
-#buttons-view {
-    margin-top: 100px;
+.articleImg {
+    height: 100px;
+    width: 100px;
 }
+
 
 #giphyLogo {
     height: 30px;
@@ -37,4 +39,12 @@ a.navbar-brand {
     margin-right: 80px;
 }
 
+<<<<<<< HEAD
 /* End of Navbar WB */
+=======
+.headlineImg {
+    height: 250px;
+    width: 250px;
+}
+
+>>>>>>> a528d739a8bb7563835b2a33c5c2073b617cc0bf
