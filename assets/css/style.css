@@ -1,6 +1,5 @@
 
 
-
 /* Navbar WB */
 .navbar.navbar-default {
     background-color: #bee8eb;
@@ -10,7 +9,8 @@
 a.nav-link {
     color: black;
     margin-left: 20px;
-
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 24px;
 }
 
 /*nav main*/
@@ -20,17 +20,29 @@ a.nav-link {
 
 /*navbar brand*/
 a.navbar-brand {
-    margin-left: 80px; 
+    margin-left: 40px; 
     color: white;
     font-family: 'Righteous', cursive;
     font-size: 38px;
 }
 
 /*search bar*/
+.form-control {
+    height: calc(2.25rem + 10px);
+}
 .form-inline {
     margin-right: 80px;
+    font-size: 24px;
 }
 
+.btn {
+    font-size: 20px;
+}
+
+
+
+/* End of Navbar WB */
+=======
 /* images from articles */
 .headlineImg {
     height: 250px;
@@ -41,3 +53,4 @@ a.navbar-brand {
     height: 200px;
     width: 200px;
 }
+
