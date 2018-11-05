@@ -1,4 +1,5 @@
 
+
 // NEWS API 
 const NEWS_API_EVERYTHING = "https://newsapi.org/v2/everything?";
 
