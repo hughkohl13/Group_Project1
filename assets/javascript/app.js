@@ -1,7 +1,8 @@
+
 // NEWS API 
 const NEWS_API_EVERYTHING = "https://newsapi.org/v2/everything?";
 
-function publishNews(el, topic, from, size, page) {
+function publishNews(topic, from, size, page) {
     from = formatDateForNewsAPI(from || new Date());
     size = size || 10;
     page = page || 1;
@@ -19,22 +20,31 @@ function publishNews(el, topic, from, size, page) {
         method: "GET",
     }).done(function(response) {
         console.log(response);
-        if (response.articles.length > 0) {
-            createNewsHeadline(response.articles[0]);
-        }
-        // for (var n = 1; n < response.articles.length; n += 3) {
-        //     createNewsRow(response.articles.slice(n, n + 3));
-        // }
+        createNews(response.articles);
     });
 }
 
-function createNewsHeadline(item) {
-    console.log("creating headline");
+function createNews(items) {
+    var headline = document.getElementById("headline");
+    var newsSection = document.getElementById("newsSection");
+    removedChildren(headline);
+    removedChildren(newsSection);
+    if (items.length > 0) {
+        createNewsHeadline(headline, items[0]);
+    }
+    for (var n = 1; n < items.length; n += 3) {
+        createNewsRow(newsSection, items.slice(n, n + 3));
+    }
+}
+
+function createNewsHeadline(node, item) {
     var row = document.createElement("div");
     row.className = "row";
     var spacer1 = document.createElement("div");
     spacer1.className = "articleBlock col-sm-2 col-md-2 col-lg-2";
     row.appendChild(spacer1);
+
+    var textColumns = 9;
     if (item.urlToImage) {
         var divImg = document.createElement("div");
         divImg.className = "headlineBlock col-sm-3 col-md-3 col-lg-3";
@@ -46,61 +56,92 @@ function createNewsHeadline(item) {
         divImg.appendChild(img);
         row.appendChild(divImg);
 
-        var text = document.createElement("div");
-        text.className = "headlineBlock col-sm-6 col-md-6 col-lg-6";
-        var elipsis = item.content.indexOf("…");
-        text.appendChild(document.createTextNode(item.content.substring(0, elipsis)));
-        var link = document.createElement("a");
-        link.appendChild(document.createTextNode("…"));
-        link.href = item.url;
-        text.appendChild(link);
-        row.appendChild(text);
-    } else {
-        var text = document.createElement("div");
-        text.className = "headlineBlock col-sm-9 col-md-9 col-lg-9";
-        var elipsis = item.content.indexOf("…");
-        text.appendChild(document.createTextNode(item.content.substring(0, elipsis)));
-        var link = document.createElement("a");
-        link.appendChild(document.createTextNode("…"));
-        link.href = item.url;
-        text.appendChild(link);
-        row.appendChild(text);
+        textColumns -= 3;
     }
+    var text = document.createElement("div");
+    text.className = "headlineBlock col-sm-" + textColumns + "col-md-" + textColumns + " col-lg-" + textColumns;
+    createNewsContent(text, item);
+    row.appendChild(text);
+
     var spacer2 = document.createElement("div");
     spacer2.className = "articleBlock col-sm-1 col-md-1 col-lg-1";
     row.appendChild(spacer2);
-    document.getElementById("headline").appendChild(row);
+    
+    node.appendChild(row);
 }
 
-function createNewsArticle(item) {
+function createNewsRow(node, items) {
+    var row = document.createElement("div");
+    row.className = "row";
+    var spacer1 = document.createElement("div");
+    spacer1.className = "articleBlock col-sm-2 col-md-2 col-lg-2";
+    row.appendChild(spacer1);
+
+    for (var i = 0; i < items.length; i++) {
+        createNewsItem(row, items[i]);
+    }
+
+    var spacer2 = document.createElement("div");
+    spacer2.className = "articleBlock col-sm-1 col-md-1 col-lg-1";
+    row.appendChild(spacer2);
+    
+    node.appendChild(row);
+}
+
+function createNewsItem(node, item) {
+    var textColumns = 3;
     var div = document.createElement("div");
-    var title = document.createElement("a");
-    title.appendChild(document.createTextNode(item.title));
-    title.href = item.url;
-    div.appendChild(title);
-    var description = document.createElement("div");
-    description.appendChild(document.createTextNode(item.description));
-    div.appendChild(description);
+    div.className = "articleBlock col-sm-" + textColumns + "col-md-" + textColumns + " col-lg-" + textColumns;
     if (item.urlToImage) {
+        var divImg = document.createElement("div");
         var img = document.createElement("img");
+        img.className = "articleImg";
         img.src = item.urlToImage;
         img.alt = item.description;
         img.title = item.title;
-        div.appendChild(img);
+        divImg.appendChild(img);
+        div.appendChild(divImg);
     }
-    return div;
+
+    var author = document.createElement("div");
+    author.class = "authorTxt";
+    author.appendChild(document.createTextNode(item.author));
+
+    var text = document.createElement("p");
+    text.class = "articleTxt";
+    createNewsContent(text, item);
+    div.appendChild(text);
+
+    node.appendChild(div);
+}
+
+function createNewsContent(node, item) {
+    var ellipsis = item.content.indexOf("…");
+    if (ellipsis > 0) {
+        node.appendChild(document.createTextNode(item.content.substring(0, ellipsis)));
+        var link = document.createElement("a");
+        link.appendChild(document.createTextNode("…"));
+        link.href = item.url;
+        node.appendChild(link);
+    } else {
+        node.appendChild(document.createTextNode(item.content));
+    }
 }
 
 function formatDateForNewsAPI(date) {
     return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
 }
 
+function removedChildren(node) {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
+}
+
 function newsSearch() {
-    var topic = document.forms["searchForm"]["inputField"].value;
-    console.log("searching for " + topic);
-    publishNews(document.getElementsByClassName("newsSection"), topic);
+    publishNews(document.forms["searchForm"]["inputField"].value);
 }
 
 $(document).ready(function() {
-    publishNews(document.getElementsByClassName("newsSection"), "javascript");
+    publishNews("javascript");
 });
