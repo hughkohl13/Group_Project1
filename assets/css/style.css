@@ -1,5 +1,3 @@
-
-
 /* Navbar WB */
 .navbar.navbar-default {
     background-color: #bee8eb;
@@ -38,19 +36,30 @@ a.navbar-brand {
 .btn {
     font-size: 20px;
 }
-
-
-
 /* End of Navbar WB */
 
-/* images from articles */
+/* articles */
+
+#headline {
+    padding: 10px;
+    margin: 20px;
+}
+
+#newsSection {
+    padding: 10px;
+    margin: 20px;
+}
 .headlineImg {
     height: 250px;
     width: 250px;
+    
+    margin: 10px;
 }
 
 .articleImg {
-    height: 200px;
+    height: 150px;
     width: 200px;
+    
+    margin: 10px;
 }
 
