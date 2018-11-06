@@ -37,6 +37,7 @@ a.navbar-brand {
 
 .btn {
     font-size: 18px;
+    font-size: 20px;
 }
 
 
@@ -44,6 +45,7 @@ a.navbar-brand {
 /* End of Navbar WB */
 
 
+=======
 /* images from articles */
 .headlineImg {
     height: 250px;
@@ -54,3 +56,4 @@ a.navbar-brand {
     height: 200px;
     width: 200px;
 }
+
