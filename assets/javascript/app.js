@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-
-
-// FUNCTIONAL PROGRAMMING
-$(document).ready(function() {
-
-// var news = $("#news");
-// var weather = $("#mainNews");
-
-
-// var queryGiphyURL = "https://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-//  // wikipedia api
-// queryWikiURL = "https://en.wikipedia.org/api/rest_v1/page/summary/Cat";
-
-// // google news api
-
-// //NYT 
-// var APIKey =  "20d92dce4276454fb20182dad5157970";
-// var queryNYTURL = "https://www.nytimes.com";
-
-// //NYT top stories
-// var queryNYTURL2 = "http://api.nytimes.com/svc/topstories/v2/{section}.{response-format}?api-key={your-api-key}";
-=======
->>>>>>> d570eeb8231dd3122e737bc87c7db11818731724
-
 // NEWS API 
 const NEWS_API_EVERYTHING = "https://newsapi.org/v2/everything?";
 
@@ -65,9 +39,10 @@ function createNews(items) {
 function createNewsHeadline(node, item) {
     var row = document.createElement("div");
     row.className = "row";
-    var spacer1 = document.createElement("div");
-    spacer1.className = "articleBlock col-sm-2 col-md-2 col-lg-2";
-    row.appendChild(spacer1);
+    row.setAttribute("id", "newsSection");
+    // var spacer1 = document.createElement("div");
+    // spacer1.className = "articleSpacer col-sm-2 col-md-2 col-lg-2"; // changed articleBlock to articleSpacer class
+    // row.appendChild(spacer1);
 
     var textColumns = 9;
     if (item.urlToImage) {
@@ -88,9 +63,9 @@ function createNewsHeadline(node, item) {
     createNewsContent(text, item);
     row.appendChild(text);
 
-    var spacer2 = document.createElement("div");
-    spacer2.className = "articleBlock col-sm-1 col-md-1 col-lg-1";
-    row.appendChild(spacer2);
+    // var spacer2 = document.createElement("div");
+    // spacer2.className = "articleSpacer col-sm-1 col-md-1 col-lg-1"; // changed articleBlock to articleSpacer class
+    // row.appendChild(spacer2);
     
     node.appendChild(row);
 }
@@ -98,17 +73,17 @@ function createNewsHeadline(node, item) {
 function createNewsRow(node, items) {
     var row = document.createElement("div");
     row.className = "row";
-    var spacer1 = document.createElement("div");
-    spacer1.className = "articleBlock col-sm-2 col-md-2 col-lg-2";
-    row.appendChild(spacer1);
+    // var spacer1 = document.createElement("div");
+    // spacer1.className = "articleSpacer col-sm-2 col-md-2 col-lg-2"; // changed articleBlock to articleSpacer class
+    // row.appendChild(spacer1);
 
     for (var i = 0; i < items.length; i++) {
         createNewsItem(row, items[i]);
     }
 
-    var spacer2 = document.createElement("div");
-    spacer2.className = "articleBlock col-sm-1 col-md-1 col-lg-1";
-    row.appendChild(spacer2);
+    // var spacer2 = document.createElement("div");
+    // spacer2.className = "articleSpacer col-sm-1 col-md-1 col-lg-1"; // changed articleBlock to articleSpacer class
+    // row.appendChild(spacer2);
     
     node.appendChild(row);
 }
@@ -129,11 +104,11 @@ function createNewsItem(node, item) {
     }
 
     var author = document.createElement("div");
-    author.class = "authorTxt";
+    author.className = "authorTxt";
     author.appendChild(document.createTextNode(item.author));
 
     var text = document.createElement("p");
-    text.class = "articleTxt";
+    text.className = "articleTxt";
     createNewsContent(text, item);
     div.appendChild(text);
 
