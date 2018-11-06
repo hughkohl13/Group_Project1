@@ -1,6 +1,7 @@
 /* Navbar WB */
 .navbar.navbar-default {
     background-color: #bee8eb;
+    border-bottom: 2px solid gray;
 }
 
 /*navbar link*/
@@ -55,6 +56,13 @@ input.form-control {
     font-size: 20px;
 }
 /* End of Navbar WB */
+
+
+/* body */
+body {
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/brilliant.png");
+}
 
 /* Sidebar - WB */
 #sidebar {
@@ -187,31 +195,60 @@ a.article:hover {
 
 /* articles */
 
+/* articles */
+/* headline article */
 #headline {
-    padding: 10px;
-    margin: 20px;
+
 }
 
+.headlineblock {
+}
 /* End of Navbar WB */
 
 
 /* images from articles */
-=======
 #newsSection {
     padding: 10px;
     margin: 20px;
+
 }
+
 .headlineImg {
-    height: 250px;
-    width: 250px;
-    
+    height: 400px;
+    width: 400px;
     margin: 10px;
+}
+
+/* body articles */
+#newsSection {
+    padding: 10px;
+    margin: 20px;
+    margin-left: 15%;
+    margin-right: 10%;
+    border-bottom: 2px solid grey;
 }
 
 .articleImg {
     height: 150px;
     width: 200px;
-    
     margin: 10px;
 }
+
+.articleTxt {
+    border-bottom: none !important;
+    padding: 0 10px 0 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.articleblock {
+    padding: 15px;
+    border: 1px solid #e9e9e9;
+    border-bottom-color: #d5d5d5;
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+}
+
+
 
