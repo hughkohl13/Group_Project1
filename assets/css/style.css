@@ -223,6 +223,7 @@ padding-left:  10px;
     border-radius: 4px;
     background-color: #fff;
     color: #333;
+    margin-bottom: 30px;
 }
 
 
@@ -268,11 +269,13 @@ padding-left:  10px;
     border-radius: 4px;
     background-color: #fff;
     color: #333;
+    margin-bottom: 20px;
 }
 
 .OpenTabImg {
     height: 20px;
     width: 20px;
+    position: absolute;
 }
 
 #loadBtn {
@@ -280,5 +283,9 @@ padding-left:  10px;
     background-color: #47748b;
 }
 
+p {
+    float: right;
+    width: 350px;
+}
 
 

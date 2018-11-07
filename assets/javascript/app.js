@@ -21,6 +21,8 @@ function publishNews(topic, from, size, page) {
     }).done(function(response) {
         console.log(response);
         console.log(response.articles);
+        console.log(response.articles.description);
+        console.log(response.articles.urlToImage);
 
     function createHeadlineBlock () {
         // create headline container
@@ -44,12 +46,17 @@ function publishNews(topic, from, size, page) {
 
     for(var i = 0; i < response.articles.length; i++) {
         function createNewsBlock() {
+            // create divBlock container
             var divBlock = $('<div>');
             $(divBlock).attr("class", "articleBlock");
+
+            // create image container inside divBlock
             var divImg = $('<img>');
             $(divImg).attr("src", response.articles[i].urlToImage);
             $(divImg).attr("class", "articleImg");
             console.log(response.articles[i].urlToImage);
+
+            // create text container inside divBlock
             var divText = $('<p>');
             $(divText).text(response.articles[i].description);
             console.log(response.articles[i].description);
