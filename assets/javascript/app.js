@@ -8,14 +8,15 @@ function publishNews(topic, from, size, page) {
     page = page || 1;
     var queryURL = NEWS_API_EVERYTHING + $.param({
         "q" : topic,
-        "from" : "2018-11-05",
+        "from" : date, //"2018-11-05",
         "language" : "en",
         "soryBy" : "publishedAt",
         "apiKey" : "cbdf3130345f4553845f32254743d129",
         "pageSize" : size,
         "page" : page
+        //////////
     });
-    return $.ajax({
+    $.ajax({
         url: queryURL,
         method: "GET",
     }).done(function(response) {
@@ -115,9 +116,11 @@ function createNewsItem(node, item) {
     node.appendChild(div);
 }
 
+//
 function createNewsContent(node, item) {
     var ellipsis = item.content.indexOf("…");
     if (ellipsis > 0) {
+        //create link 
         node.appendChild(document.createTextNode(item.content.substring(0, ellipsis)));
         var link = document.createElement("a");
         link.appendChild(document.createTextNode("…"));
