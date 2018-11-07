@@ -1,7 +1,8 @@
     
     function searchPlaceWeather(place) {
         var APIKey = "166a433c57516f51dfab1f7edaed8413";
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + APIKey;    
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + APIKey;
+        console.log(place);    
 
     // Here we run our AJAX call to the OpenWeatherMap API
         $.ajax({
@@ -14,9 +15,10 @@
             console.log(response);
 
             // Transfer content to HTML
-            $(".city").html("<h1>" + response.name + ", " + response.sys.country + " Weather Details</h1>");
-            $(".wind").text("Wind Speed: " + response.wind.speed);
-            $(".humidity").text("Humidity: " + response.main.humidity);
+            $("#location").text(response.name + ", " + response.sys.country);
+            $("#weather").text(reponse.weather[0].main + ", " + response.weather[0].description);
+            $("#temp-min").text(response.main.temp_min);
+            $("#temp-max").text(response.main.temp_m);
             var Fahrenheit = (response.main.temp - 273.15) * 1.80 + 32;
             console.log(Fahrenheit);
             $(".temp").text("Temperature (F) " + Fahrenheit);
@@ -27,7 +29,8 @@
             console.log("Temperature (F): " + response.main.temp);
         });
     };
-
+    
+    // Collapsible Sidebar
     $(document).ready(function () {
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
@@ -51,8 +54,3 @@
         var inputPlace = $("#place-input").val().trim();
         searchPlaceWeather(inputPlace);
     });
- 
-    <div class="city"></div>
-<div class="wind"></div>
-<div class="humidity"></div>
-<div class="temp"></div>
