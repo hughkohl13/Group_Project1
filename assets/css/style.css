@@ -270,6 +270,11 @@ padding-left:  10px;
     color: #333;
 }
 
+.OpenTabImg {
+    height: 20px;
+    width: 20px;
+}
+
 #loadBtn {
     justify-content: center;
     background-color: #47748b;
