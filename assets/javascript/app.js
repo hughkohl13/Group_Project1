@@ -53,7 +53,11 @@ function publishNews(topic, from, size, page) {
             var divText = $('<p>');
             $(divText).text(response.articles[i].description);
             console.log(response.articles[i].description);
-            $(divBlock).append(divImg).append(divText);
+            var linkTo = $('<img>');
+            $(linkTo).attr("src", "assets/images/OpenNewTab.png")
+            $(linkTo).attr("href", response.articles[i].url);
+            $(linkTo).attr("class", "OpenTabImg");
+            $(divBlock).append(divImg).append(divText).append(linkTo);
             $('#newsSection').prepend(divBlock);
         };
     createNewsBlock(); 
