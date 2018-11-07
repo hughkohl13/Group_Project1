@@ -1,5 +1,6 @@
 // NEWS API 
-const NEWS_API_EVERYTHING = "https://newsapi.org/v2/everything?";
+
+var NEWS_API_EVERYTHING = "https://newsapi.org/v2/everything?";
 
 function publishNews(topic, from, size, page) {
     from = formatDateForNewsAPI(from || new Date());
@@ -7,141 +8,68 @@ function publishNews(topic, from, size, page) {
     page = page || 1;
     var queryURL = NEWS_API_EVERYTHING + $.param({
         "q" : topic,
-        "from" : "2018-11-05",
+        "from" : "2018-11-06",
         "language" : "en",
-        "soryBy" : "publishedAt",
+        "sortBy" : "publishedAt",
         "apiKey" : "cbdf3130345f4553845f32254743d129",
-        "pageSize" : size,
-        "page" : page
+        // "pageSize" : size,
+        // "page" : page
     });
     return $.ajax({
         url: queryURL,
         method: "GET",
     }).done(function(response) {
         console.log(response);
-        createNews(response.articles);
-    });
-}
+        console.log(response.articles);
 
-function createNews(items) {
-    var headline = document.getElementById("headline");
-    var newsSection = document.getElementById("newsSection");
-    removedChildren(headline);
-    removedChildren(newsSection);
-    if (items.length > 0) {
-        createNewsHeadline(headline, items[0]);
-    }
-    for (var n = 1; n < items.length; n += 3) {
-        createNewsRow(newsSection, items.slice(n, n + 3));
-    }
-}
+    function createHeadlineBlock () {
+        // create headline container
+        var headlineBlock = $('<div>');
+        $(headlineBlock).attr("class", "headlineBlock");
 
-function createNewsHeadline(node, item) {
-    var row = document.createElement("div");
-    row.className = "row";
-    row.setAttribute("id", "newsSection");
-    // var spacer1 = document.createElement("div");
-    // spacer1.className = "articleSpacer col-sm-2 col-md-2 col-lg-2"; // changed articleBlock to articleSpacer class
-    // row.appendChild(spacer1);
+        // create image container inside headline
+        var headlineImg = $('<img>');
+        $(headlineImg).attr("src", response.articles[0].urlToImage);
+        $(headlineImg).attr("class", "articleImg");
 
-    var textColumns = 9;
-    if (item.urlToImage) {
-        var divImg = document.createElement("div");
-        divImg.className = "headlineBlock col-sm-3 col-md-3 col-lg-3";
-        var img = document.createElement("img");
-        img.className = "headlineImg";
-        img.src = item.urlToImage;
-        img.alt = item.description;
-        img.title = item.title;
-        divImg.appendChild(img);
-        row.appendChild(divImg);
+        // create text container inside headline
+        var headlineText = $('<p>');
+        $(headlineText).text(response.articles[0].description);
+        console.log(response.articles[0].description);
+        $(headlineBlock).append(headlineImg).append(headlineText);
+        $('#headline').append(headlineBlock);
+    };
 
-        textColumns -= 3;
-    }
-    var text = document.createElement("div");
-    text.className = "headlineBlock col-sm-" + textColumns + "col-md-" + textColumns + " col-lg-" + textColumns;
-    createNewsContent(text, item);
-    row.appendChild(text);
+    createHeadlineBlock(); 
 
-    // var spacer2 = document.createElement("div");
-    // spacer2.className = "articleSpacer col-sm-1 col-md-1 col-lg-1"; // changed articleBlock to articleSpacer class
-    // row.appendChild(spacer2);
-    
-    node.appendChild(row);
-}
+    for(var i = 0; i < response.articles.length; i++) {
+        function createNewsBlock() {
+            var divBlock = $('<div>');
+            $(divBlock).attr("class", "articleBlock");
+            var divImg = $('<img>');
+            $(divImg).attr("src", response.articles[i].urlToImage);
+            $(divImg).attr("class", "articleImg");
+            console.log(response.articles[i].urlToImage);
+            var divText = $('<p>');
+            $(divText).text(response.articles[i].description);
+            console.log(response.articles[i].description);
+            $(divBlock).append(divImg).append(divText);
+            $('#newsSection').append(divBlock);
+        };
+    createNewsBlock(); 
+    };
 
-function createNewsRow(node, items) {
-    var row = document.createElement("div");
-    row.className = "row";
-    // var spacer1 = document.createElement("div");
-    // spacer1.className = "articleSpacer col-sm-2 col-md-2 col-lg-2"; // changed articleBlock to articleSpacer class
-    // row.appendChild(spacer1);
-
-    for (var i = 0; i < items.length; i++) {
-        createNewsItem(row, items[i]);
-    }
-
-    // var spacer2 = document.createElement("div");
-    // spacer2.className = "articleSpacer col-sm-1 col-md-1 col-lg-1"; // changed articleBlock to articleSpacer class
-    // row.appendChild(spacer2);
-    
-    node.appendChild(row);
-}
-
-function createNewsItem(node, item) {
-    var textColumns = 3;
-    var div = document.createElement("div");
-    div.className = "articleBlock col-sm-" + textColumns + "col-md-" + textColumns + " col-lg-" + textColumns;
-    if (item.urlToImage) {
-        var divImg = document.createElement("div");
-        var img = document.createElement("img");
-        img.className = "articleImg";
-        img.src = item.urlToImage;
-        img.alt = item.description;
-        img.title = item.title;
-        divImg.appendChild(img);
-        div.appendChild(divImg);
-    }
-
-    var author = document.createElement("div");
-    author.className = "authorTxt";
-    author.appendChild(document.createTextNode(item.author));
-
-    var text = document.createElement("p");
-    text.className = "articleTxt";
-    createNewsContent(text, item);
-    div.appendChild(text);
-
-    node.appendChild(div);
-}
-
-function createNewsContent(node, item) {
-    var ellipsis = item.content.indexOf("…");
-    if (ellipsis > 0) {
-        node.appendChild(document.createTextNode(item.content.substring(0, ellipsis)));
-        var link = document.createElement("a");
-        link.appendChild(document.createTextNode("…"));
-        link.href = item.url;
-        node.appendChild(link);
-    } else {
-        node.appendChild(document.createTextNode(item.content));
-    }
-}
+});
+};
 
 function formatDateForNewsAPI(date) {
     return date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
-}
-
-function removedChildren(node) {
-    while (node.firstChild) {
-        node.removeChild(node.firstChild);
-    }
-}
+};
 
 function newsSearch() {
     publishNews(document.forms["searchForm"]["inputField"].value);
-}
+};
 
-$(document).ready(function() {
-    publishNews("javascript");
+$(document).ready(function(){
+publishNews("javascript");
 });
