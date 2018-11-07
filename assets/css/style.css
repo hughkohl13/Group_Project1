@@ -224,6 +224,8 @@ padding-left:  10px;
     background-color: #fff;
     color: #333;
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -250,14 +252,9 @@ padding-left:  10px;
 }
 
 .articleImg {
-<<<<<<< HEAD
-    height: 150px;
-    width: 200px;
-    margin: 10px;
-=======
-    height: 200px;
-    width: 300px;
->>>>>>> parent of d6c3950... add basic css changes, fixed bugs in js
+    width: 250px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .articleTxt {
@@ -275,6 +272,9 @@ padding-left:  10px;
     background-color: #fff;
     color: #333;
     margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    
 }
 
 .OpenTabImg {
@@ -289,8 +289,6 @@ padding-left:  10px;
 }
 
 p {
-    float: right;
-    width: 350px;
 }
 
 
