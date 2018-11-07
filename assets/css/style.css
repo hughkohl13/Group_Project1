@@ -270,5 +270,10 @@ padding-left:  10px;
     color: #333;
 }
 
+#loadBtn {
+    justify-content: center;
+    background-color: #47748b;
+}
+
 
 

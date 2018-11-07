@@ -54,7 +54,7 @@ function publishNews(topic, from, size, page) {
             $(divText).text(response.articles[i].description);
             console.log(response.articles[i].description);
             $(divBlock).append(divImg).append(divText);
-            $('#newsSection').append(divBlock);
+            $('#newsSection').prepend(divBlock);
         };
     createNewsBlock(); 
     };
