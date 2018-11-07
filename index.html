@@ -1,140 +1,140 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>News Project</title>
-    <meta name="viewport" content="width=device-widthtopic, from, size, page, initial-scale=1">
-
-    <!-- javascript links -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-
-    <script src="assets/javascript/weather.js"></script>
-    <script src="assets/javascript/app.js"></script>
-
-    <!-- css links -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
-
-    <!-- font links-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="assets/javascript/weather.js"></script> -->
+    <script src="assets/javascript/app.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-
-
-
 </head>
-
 <body>
+ 
+<!-- website name and header WB -->
+<!-- navbar WB --> 
+<nav id="nav" class="navbar navbar-default navbar-expand-lg">
+    <a class="navbar-brand" href="index.html">Hugh Media</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Weather Forecast
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">News</a>
+        </li>
 
-    <!-- website name and header WB -->
-    <!-- navbar WB -->
-    <nav id="nav" class="navbar navbar-default navbar-expand-lg">
-        <a class="navbar-brand" href="index.html">New Media</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navi˜gation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- SEARCH  BUTTON-->
+      </ul>
+      <form name="searchForm" class="form-inline my-2 my-lg-0">
+        <input name="inputField" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="newsSearch();">Search</button>
+      </form>
+    </div>
+  </nav>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Weather</span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
-                </li>
-            </ul>
+  <!-- Headline -->
 
-            <!-- Search button -->
-            <form name="searchForm" class="form-inline my-2 my-lg-0">
-                <input name="inputField" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="newsSearch();">Search</button>
-            </form>
+<div id="headline" class="row">
+    <!--    
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            &nbsp;
         </div>
-    </nav>
-
-    <!-- Sidebar-WB  -->
-    <nav id="sidebar">
-        <div id="dismiss">
-            <i class="fas fa-arrow-left"></i>
+        <div class="headlineBlock col-sm-3 col-md-3 col-lg-3">
+                <img class="headlineImg" src="assets/images/testImage1.png">
         </div>
-
-        <div class="sidebar-header">
-            <h3>Weather report</h3>
+        <div class="headlineBlock col-sm-3 col-md-3 col-lg-3">
+                <p class="headlineTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
         </div>
-
-        <form name="searchForm" class="form-inline my-2 my-lg-0">
-            <input name="inputField" class="form-control mr-md-2" type="search" placeholder="Insert zip-code"
-                aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="newsSearch();">Search</button>
-        </form>
-
-        <div class="list-unstyled components">
-            <h4>City, Country weather report</h4>
-            <p>Location: <span id="location"></span></p>
-            <p>Weather: <span id="weather"></span></p>
-            <p>Temp Min: <span id="temp-min"></span>°F</p>
-            <p>Temp Max: <span id="temp-max"></span>°F</p>
+        <div class="headlineBlock col-sm-3 col-md-3 col-lg-3">
+                &nbsp;
         </div>
-        <div id="maps">
-            <h2>Maps</h2>
+    -->
+</div>
+
+<div id = "newsSection">
+    <!-- main article block
+    <div class="row">
+        <div class="articleBlock col-sm-2 col-md-2 col-lg-2">
+                &nbsp;
         </div>
-    </nav>
-
-    <!-- main content wrapper -->
-    <div class="wrapper">
-
-
-<!-- <button id="loadBtn">LOAD MORE </button> -->
-
-        <!-- headline section -->
-        <div id="headline">
+        <div class="articleBlock col-sm-3 col-md-3 col-lg-3">
+            <div id=""><img class="articleImg" src="assets/images/testImage2.png"></div>
+            <div class="authorTxt">Mr. Placeholder </div>
+            <p class="articleTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
         </div>
-
-        <div id="newsSection">
+        <div class="articleBlock col-sm-3 col-md-3 col-lg-3">
+            <div id=""><img class="articleImg" src="assets/images/testImage2.png"></div>
+            <div class="authorTxt">Mr. Placeholder </div>
+            <p class="articleTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
         </div>
-
-
-        <button id="loadBtn">LOAD MORE </button>
-
-
+        <div class="articleBlock col-sm-3 col-md-3 col-lg-3">
+            <div id=""><img class="articleImg" src="assets/images/testImage2.png"></div>
+            <div class="authorTxt">Mr. Placeholder </div>
+            <p class="articleTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
+        </div>
+        <div class="articleBlock col-sm-1 col-md-1 col-lg-1">
+                &nbsp;
+        </div>
     </div>
 
+    <div class="row">
+        <div class="articleBlock col-sm-2 col-md-2 col-lg-2">
+                &nbsp;
+        </div>
+        <div class="articleBlock col-sm-3 col-md-3 col-lg-3">
+            <div id=""><img class="articleImg" src="assets/images/testImage2.png"></div>
+            <div class="authorTxt">Mr. Placeholder </div>
+            <p class="articleTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
+        </div>
+        <div class="articleBlock col-sm-3 col-md-3 col-lg-3">
+            <div id=""><img class="articleImg" src="assets/images/testImage2.png"></div>
+            <div class="authorTxt">Mr. Placeholder </div>
+            <p class="articleTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
+        </div>
+        <div class="articleBlock col-sm-3 col-md-3 col-lg-3">
+            <div id=""><img class="articleImg" src="assets/images/testImage2.png"></div>
+            <div class="authorTxt">Mr. Placeholder </div>
+            <p class="articleTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
+        </div>
+        <div class="articleBlock col-sm-1 col-md-1 col-lg-1">
+                &nbsp;
+        </div>
+    </div>
+    -->
+</div>
 
-</div>>
 
 
-    <!-- weather section -->
+<!-- weather section -->
 
-    <form>
-        <input type="text" id="place-input">
-        <button id="place-search">Search Now</button>
-    </form>
-
-    <div class="city"></div>
-    <div class="wind"></div>
-    <div class="humidity"></div>
-    <div class="temp"></div>
-
-
-    <!-- cat gif section -->
+<form>
+    <input type ="text" id="place-input">
+    <button id="place-search">Search Now</button>
+</form>   
+ 
+<div class="city"></div>
+<div class="wind"></div>
+<div class="humidity"></div>
+<div class="temp"></div>
 
 
-    <!-- custom scrollbar-WB -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
-
+<!-- cat gif section -->
 </body>
-
 </html>
