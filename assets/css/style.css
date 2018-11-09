@@ -1,4 +1,4 @@
-/* Navbar WB */
+Navbar WB
 .navbar.navbar-default {
     background-color: #bee8eb;
     border-bottom: 2px solid gray;
@@ -260,6 +260,12 @@ padding-left:  10px;
 }
 
 .articleTitle {
+    height: 150px;
+    width: 200px;
+    margin: 10px;
+    width: 250px;
+    margin-right: auto;
+    margin-left: auto;
 
 }
 
