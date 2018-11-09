@@ -50,9 +50,7 @@ function createNews(items) {
 function createNewsHeadline(node, item) {
     var row = document.createElement("div");
     row.className = "row";
-    var spacer1 = document.createElement("div");
-    spacer1.className = "articleBlock col-sm-2 col-md-2 col-lg-2";
-    row.appendChild(spacer1);
+
 
     var textColumns = 9;
     if (item.urlToImage) {
@@ -95,9 +93,6 @@ function createNewsHeadline(node, item) {
     headline.appendChild(text);
     row.appendChild(headline);
 
-    var spacer2 = document.createElement("div");
-    spacer2.className = "articleBlock col-sm-1 col-md-1 col-lg-1";
-    row.appendChild(spacer2);
     
     node.appendChild(row);
 }
@@ -106,17 +101,13 @@ function createNewsHeadline(node, item) {
 function createNewsRow(node, items) {
     var row = document.createElement("div");
     row.className = "row";
-    var spacer1 = document.createElement("div");
-    spacer1.className = "articleBlock col-sm-2 col-md-2 col-lg-2";
-    row.appendChild(spacer1);
+
 
     for (var i = 0; i < items.length; i++) {
         createNewsItem(row, items[i]);
     }
 
-    var spacer2 = document.createElement("div");
-    spacer2.className = "articleBlock col-sm-1 col-md-1 col-lg-1";
-    row.appendChild(spacer2);
+
     
     node.appendChild(row);
 }
