@@ -11,7 +11,7 @@ function publishNews(topic, from, size, page) {
     page = page || 1;
     var queryURL = NEWS_API_EVERYTHING + $.param({
         "q" : topic,
-        "from" : "2018-11-05",
+        "from" : "2018-11-08",
         "language" : "en",
         "soryBy" : "publishedAt",
         "apiKey" : "cbdf3130345f4553845f32254743d129",

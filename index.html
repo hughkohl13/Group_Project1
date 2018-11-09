@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script src="assets/javascript/weather.js"></script> -->
     <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/weather.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
@@ -23,6 +24,13 @@
     <!-- website name and header WB -->
     <!-- navbar WB -->
     <nav id="nav" class="navbar navbar-default navbar-expand-lg">
+
+        <a class="navbar-brand" href="index.html">New Media</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -39,7 +47,9 @@
                         </div>
 
                         <form class="form-inline my-2 my-lg-0">
-                            <input id="place-input" class="form-control mr-md-2" type="search" placeholder="Insert zip-code"
+
+                            <input id="place-input" class="form-control mr-md-2" type="search" placeholder="Insert City Name"
+
                                 aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" id="place-search" type="button">Search</button>
                         </form>
@@ -86,32 +96,77 @@
 
 
 
-    <!-- End of weather sidebar - WB -->
-
-    <div id="headline" class="row">
-    </div>
-
-    <div id="newsSection"></div>
+<div class="leftSidebar col-md-2 col-lg-2 col-sm-2"></div>
 
 
-    <!-- Custom scrollbar-WB-only works if it's in the body -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- Google maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdOgF1b9zZ2sejnXwjlfA66oRmSHSNK9E&libraries=places&callback=initAutocomplete"
-        async defer></script>
+<!-- create wrapper for principle news section -->
+<div class="wrapper col-md-8 col-lg-8 col-sm-8">
 
-    <!-- cat gif section -->
+<!-- headline wrapper -->
+<div id="headline" class="row"></div>
 
-    <script>
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
+<!-- newsSection wrapper -->
+<div id = "newsSection"></div>
 
-            $('#dismiss, .overlay').on('click', function () {
-                $('#sidebar').removeClass('active');
-                $('.overlay').removeClass('active');
-            });
+
+
+<div class="rightSidebar col-md-2 col-lg-2 col-sm-2"></div>
+
+</div>
+
+
+
+<!-- Custom scrollbar-WB-only works if it's in the body -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- Google maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdOgF1b9zZ2sejnXwjlfA66oRmSHSNK9E&libraries=places&callback=initAutocomplete"
+async defer></script>
+
+<script>
+$(document).ready(function () {
+    $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+    });
+
+    $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+    });
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+});
+
+function initAutocomplete() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: -33.8688, lng: 151.2195 },
+        zoom: 13,
+        mapTypeId: 'roadmap'
+    });
+
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function () {
+        searchBox.setBounds(map.getBounds());
+    });
+
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function () {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+            return;
+        }
 
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').addClass('active');
@@ -119,75 +174,48 @@
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
+
+        // Clear out the old markers.
+        markers.forEach(function (marker) {
+            marker.setMap(null);
+
         });
+        markers = [];
 
-        function initAutocomplete() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -33.8688, lng: 151.2195 },
-                zoom: 13,
-                mapTypeId: 'roadmap'
-            });
+        // For each place, get the icon, name and location.
+        var bounds = new google.maps.LatLngBounds();
+        places.forEach(function (place) {
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            var icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
 
-            // Create the search box and link it to the UI element.
-            var input = document.getElementById('pac-input');
-            var searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location
+            }));
 
-            // Bias the SearchBox results towards current map's viewport.
-            map.addListener('bounds_changed', function () {
-                searchBox.setBounds(map.getBounds());
-            });
-
-            var markers = [];
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
-            searchBox.addListener('places_changed', function () {
-                var places = searchBox.getPlaces();
-
-                if (places.length == 0) {
-                    return;
-                }
-
-                // Clear out the old markers.
-                markers.forEach(function (marker) {
-                    marker.setMap(null);
-                });
-                markers = [];
-
-                // For each place, get the icon, name and location.
-                var bounds = new google.maps.LatLngBounds();
-                places.forEach(function (place) {
-                    if (!place.geometry) {
-                        console.log("Returned place contains no geometry");
-                        return;
-                    }
-                    var icon = {
-                        url: place.icon,
-                        size: new google.maps.Size(71, 71),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25)
-                    };
-
-                    // Create a marker for each place.
-                    markers.push(new google.maps.Marker({
-                        map: map,
-                        icon: icon,
-                        title: place.name,
-                        position: place.geometry.location
-                    }));
-
-                    if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                });
-                map.fitBounds(bounds);
-            });
-        }
-    </script>
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+        });
+        map.fitBounds(bounds);
+    });
+}
+</script>
 
 </body>
 
