@@ -51,8 +51,7 @@
         var inputPlace = $("#place-input").val().trim();
         searchPlaceWeather(inputPlace);
     });
- 
-    <div class="city"></div>
+{/* <div class="city"></div>
 <div class="wind"></div>
 <div class="humidity"></div>
-<div class="temp"></div>
+<div class="temp"></div> */}
