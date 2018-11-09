@@ -42,7 +42,7 @@
                         </div>
 
                         <form name="searchForm" class="form-inline my-2 my-lg-0">
-                            <input name="inputField" class="form-control mr-md-2" type="search" placeholder="Insert zip-code"
+                            <input name="inputField"  class="form-control mr-md-2" type="search" placeholder="Insert zip-code"
                                 aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="newsSearch();">Search</button>
                         </form>
@@ -54,9 +54,8 @@
                             <p>Temp Min: <span id="temp-min"></span>°F</p>
                             <p>Temp Max: <span id="temp-max"></span>°F</p>
                         </div>
-                        <div id="maps">
-                            <h2>Maps</h2>
-                        </div>
+                        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                        <div id="map"></div>
                     </nav>
 
                     <div class="container-fluid">
@@ -89,24 +88,7 @@
 
     <!-- End of weather sidebar - WB -->
 
-    <!-- Headline -->
-
-    <div id="headline" class="row">
-        <!--    
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            &nbsp;
-        </div>
-        <div class="headlineBlock col-sm-3 col-md-3 col-lg-3">
-                <img class="headlineImg" src="assets/images/testImage1.png">
-        </div>
-        <div class="headlineBlock col-sm-3 col-md-3 col-lg-3">
-                <p class="headlineTxt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut repellat quis minima commodi mollitia nobis error molestias, deserunt cum magni similique quo deleniti architecto, doloribus necessitatibus accusamus debitis officiis sunt?</p>
-        </div>
-        <div class="headlineBlock col-sm-3 col-md-3 col-lg-3">
-                &nbsp;
-        </div>
-    -->
-    </div>
+   
 
     <div id="newsSection">
         <!-- main article block
@@ -177,6 +159,93 @@
         async defer></script>
 
     <!-- cat gif section -->
+
+    <script>
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+
+        function initAutocomplete() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -33.8688, lng: 151.2195 },
+                zoom: 13,
+                mapTypeId: 'roadmap'
+            });
+
+            // Create the search box and link it to the UI element.
+            var input = document.getElementById('pac-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            // Bias the SearchBox results towards current map's viewport.
+            map.addListener('bounds_changed', function () {
+                searchBox.setBounds(map.getBounds());
+            });
+
+            var markers = [];
+            // Listen for the event fired when the user selects a prediction and retrieve
+            // more details for that place.
+            searchBox.addListener('places_changed', function () {
+                var places = searchBox.getPlaces();
+
+                if (places.length == 0) {
+                    return;
+                }
+
+                // Clear out the old markers.
+                markers.forEach(function (marker) {
+                    marker.setMap(null);
+                });
+                markers = [];
+
+                // For each place, get the icon, name and location.
+                var bounds = new google.maps.LatLngBounds();
+                places.forEach(function (place) {
+                    if (!place.geometry) {
+                        console.log("Returned place contains no geometry");
+                        return;
+                    }
+                    var icon = {
+                        url: place.icon,
+                        size: new google.maps.Size(71, 71),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 25)
+                    };
+
+                    // Create a marker for each place.
+                    markers.push(new google.maps.Marker({
+                        map: map,
+                        icon: icon,
+                        title: place.name,
+                        position: place.geometry.location
+                    }));
+
+                    if (place.geometry.viewport) {
+                        // Only geocodes have viewport.
+                        bounds.union(place.geometry.viewport);
+                    } else {
+                        bounds.extend(place.geometry.location);
+                    }
+                });
+                map.fitBounds(bounds);
+            });
+        }
+    </script>
 </body>
 
 </html>
