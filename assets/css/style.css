@@ -252,9 +252,15 @@ padding-left:  10px;
 }
 
 .articleImg {
-    width: 250px;
     margin-right: auto;
     margin-left: auto;
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+}
+
+.articleTitle {
+
 }
 
 .articleTxt {
