@@ -14,6 +14,8 @@
     <script src="assets/javascript/app.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
 </head>
 
 <body>
@@ -21,11 +23,6 @@
     <!-- website name and header WB -->
     <!-- navbar WB -->
     <nav id="nav" class="navbar navbar-default navbar-expand-lg">
-        <a class="navbar-brand" href="index.html">Hugh Media</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -42,9 +39,9 @@
                         </div>
 
                         <form class="form-inline my-2 my-lg-0">
-                            <input id="place-input"  class="form-control mr-md-2" type="search" placeholder="Insert zip-code"
+                            <input id="place-input" class="form-control mr-md-2" type="search" placeholder="Insert zip-code"
                                 aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" id="place-search" type="button" >Search</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" id="place-search" type="button">Search</button>
                         </form>
 
                         <div class="list-unstyled components">
@@ -54,6 +51,7 @@
                             <p>Temp Min: <span id="temp-min"></span>°F</p>
                             <p>Temp Max: <span id="temp-max"></span>°F</p>
                         </div>
+
                         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                         <div id="map"></div>
                     </nav>
@@ -69,11 +67,13 @@
                             <i class="fas fa-align-justify"></i>
                         </button>
                     </div>
-                </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
-                </li>
+                </div>
+                <a class="navbar-brand" href="index.html">New Media</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- SEARCH  BUTTON-->
             </ul>
@@ -88,10 +88,10 @@
 
     <!-- End of weather sidebar - WB -->
 
-<div id="headline" class="row">
-</div>
+    <div id="headline" class="row">
+    </div>
 
-<div id = "newsSection"></div>
+    <div id="newsSection"></div>
 
 
     <!-- Custom scrollbar-WB-only works if it's in the body -->

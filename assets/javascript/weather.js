@@ -1,5 +1,5 @@
     
-    function searchPlaceWeather(place) {
+    function searchPlaceWeather(pl`````````````````````````````````````````````````````````````````````ace) {
         var APIKey = "166a433c57516f51dfab1f7edaed8413";
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + place + "&appid=" + APIKey;
         console.log(place);    
@@ -53,12 +53,4 @@
         event.preventDefault();
         var inputPlace = $("#place-input").val().trim();
         searchPlaceWeather(inputPlace);
-<<<<<<< HEAD
     });
-{/* <div class="city"></div>
-<div class="wind"></div>
-<div class="humidity"></div>
-<div class="temp"></div> */}
-=======
-    });
->>>>>>> e30b070cd5ca2dcf5b56f5e87aa50b415653d147
