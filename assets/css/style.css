@@ -81,6 +81,10 @@ body {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
+.sidebar-header {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 42px;
+}
 .list-unstyled {
     padding-left: 20px;
 }
@@ -110,6 +114,19 @@ body {
     color: #7386D5;
 }
 
+input#place-input {
+    padding-left: 20px;
+    margin-left: 20px;
+}
+
+button#place-search {
+    color: black;
+    background: white;
+}
+
+form.form-inline {
+    display: inline;
+}
 .overlay {
     display: none;
     position: fixed;
@@ -346,8 +363,7 @@ padding-left:  10px;
     margin-right: auto;
     margin-left: auto;
     object-fit: cover;
-    width: 250px;
-    height: 250px;
+    width: 100px;
 }
 
 .articleTitle {
@@ -360,10 +376,16 @@ padding-left:  10px;
 
 }
 
+.authorTxt {
+    font-size: 12px;
+}
+
 .articleTxt {
     border-bottom: none !important;
     padding: 0 10px 0 10px !important;
     margin-bottom: 0 !important;
+    font-size: 10px;
+    margin-top: 10px;
 }
 
 .articleblock {
@@ -372,7 +394,7 @@ padding-left:  10px;
     border-bottom-color: #d5d5d5;
     border-bottom-width: 2px;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: #fbfafa;
     color: #333;
     margin-bottom: 20px;
     margin-right: auto;
