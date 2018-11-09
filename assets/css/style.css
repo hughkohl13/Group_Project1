@@ -2,6 +2,7 @@
 .navbar.navbar-default {
     background-color: #bee8eb;
     border-bottom: 2px solid gray;
+    width: 100%;
 }
 
 /*navbar link*/
@@ -130,7 +131,7 @@ button#place-search {
 }
 
 form.form-inline {
-    display: inline;
+    display: contents;
 }
 .overlay {
     display: none;
@@ -421,4 +422,10 @@ padding-left:  10px;
 p {
 }
 
-
+@media only screen and (min-width: 768px) {
+    .navbar-expand-lg {
+        width: 100%;
+        justify-content: flex-start;
+       
+    }
+}
