@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script src="assets/javascript/weather.js"></script> -->
     <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/weather.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Righteous" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
 </head>
@@ -42,9 +43,9 @@
                         </div>
 
                         <form class="form-inline my-2 my-lg-0">
-                            <input id="place-input"  class="form-control mr-md-2" type="search" placeholder="Insert zip-code"
+                            <input id="place-input" class="form-control mr-md-2" type="search" placeholder="Insert City Name"
                                 aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" id="place-search" type="button" >Search</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" id="place-search" type="button">Search</button>
                         </form>
 
                         <div class="list-unstyled components">
@@ -88,6 +89,7 @@
 
 <div class="leftSidebar col-md-2 col-lg-2 col-sm-2"></div>
 
+
 <!-- create wrapper for principle news section -->
 <div class="wrapper col-md-8 col-lg-8 col-sm-8">
 
@@ -96,6 +98,7 @@
 
 <!-- newsSection wrapper -->
 <div id = "newsSection"></div>
+
 
 <div class="rightSidebar col-md-2 col-lg-2 col-sm-2"></div>
 
@@ -155,9 +158,17 @@ function initAutocomplete() {
             return;
         }
 
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+
         // Clear out the old markers.
         markers.forEach(function (marker) {
             marker.setMap(null);
+
         });
         markers = [];
 
