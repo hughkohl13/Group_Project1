@@ -224,6 +224,8 @@ padding-left:  10px;
     background-color: #fff;
     color: #333;
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -250,9 +252,15 @@ padding-left:  10px;
 }
 
 .articleImg {
+<<<<<<< HEAD
     height: 150px;
     width: 200px;
     margin: 10px;
+=======
+    width: 250px;
+    margin-right: auto;
+    margin-left: auto;
+>>>>>>> e30b070cd5ca2dcf5b56f5e87aa50b415653d147
 }
 
 .articleTxt {
@@ -270,6 +278,9 @@ padding-left:  10px;
     background-color: #fff;
     color: #333;
     margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    
 }
 
 .OpenTabImg {
@@ -284,8 +295,6 @@ padding-left:  10px;
 }
 
 p {
-    float: right;
-    width: 350px;
 }
 
 
