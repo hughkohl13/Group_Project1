@@ -32,17 +32,36 @@ $(document).ready(function(){
         });
     };
 
-    
-    $("#place-search").on("click", function (event) {
-        event.preventDefault();
-        console.log("alert");
-
-        var inputPlace = $("#place-input").val().trim();
-        searchPlaceWeather(inputPlace);
-        
-
+    $('#place-input').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            var inputPlace = $("#place-input").val().trim();
+            searchPlaceWeather(inputPlace);
+            var input = inputPlace; 
+        }
     });
+
 })    
+
+$(document).ready(function () {
+    $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+    });
+
+    $('#dismiss, .overlay').on('click', function () {
+        $('#sidebar').removeClass('active');
+        $('.overlay').removeClass('active');
+    });
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').addClass('active');
+        $('.overlay').addClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+
+
+});
 
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -54,7 +73,7 @@ function initAutocomplete() {
     // Create the search box and link it to the UI element.
     var input = document.getElementById('place-input');
     var searchBox = new google.maps.places.SearchBox(input);
-    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function () {
@@ -71,17 +90,9 @@ function initAutocomplete() {
             return;
         }
 
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').addClass('active');
-                $('.overlay').addClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-
         // Clear out the old markers.
         markers.forEach(function (marker) {
             marker.setMap(null);
-
         });
         markers = [];
 
