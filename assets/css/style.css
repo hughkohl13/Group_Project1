@@ -2,6 +2,7 @@
 .navbar.navbar-default {
     background-color: #bee8eb;
     border-bottom: 2px solid gray;
+    width: 100%;
 }
 
 /*navbar link*/
@@ -19,12 +20,17 @@ a.nav-link {
 
 /*navbar brand*/
 a.navbar-brand { 
-    color: white;
+    color: #5db1db;
+    
     font-family: 'Righteous', cursive;
     font-size: 30px;
     float: left;
     margin-left: 400px;
     text-align: center;
+}
+
+span#threat {
+    color: lightcoral;
 }
 
 .navbar-btn {
@@ -81,6 +87,10 @@ body {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
+.sidebar-header {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 42px;
+}
 .list-unstyled {
     padding-left: 20px;
 }
@@ -110,6 +120,19 @@ body {
     color: #7386D5;
 }
 
+input#place-input {
+    padding-left: 20px;
+    margin-left: 20px;
+}
+
+button#place-search {
+    color: black;
+    background: white;
+}
+
+form.form-inline {
+    display: contents;
+}
 .overlay {
     display: none;
     position: fixed;
@@ -356,15 +379,6 @@ padding-left:  10px;
     height: 125px;
 }
 
-/* .articleTitle {
-    height: 150px;
-    width: 200px;
-    margin: 10px;
-    width: 250px;
-    margin-right: auto;
-    margin-left: auto;
-
-} */
 
 .titleTxt {
     height: 130px;
@@ -471,5 +485,13 @@ padding-left:  10px;
         margin-bottom: 0 !important;
         font-size: 10px;
         margin-top: 10px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-expand-lg {
+        width: 100%;
+        justify-content: flex-start;
+       
     }
 }
