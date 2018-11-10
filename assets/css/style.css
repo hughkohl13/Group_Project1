@@ -21,11 +21,10 @@ a.nav-link {
 /*navbar brand*/
 a.navbar-brand { 
     color: #5db1db;
-    
     font-family: 'Righteous', cursive;
     font-size: 30px;
     float: left;
-    margin-left: 400px;
+    margin-right: 300px;
     text-align: center;
 }
 
@@ -93,6 +92,7 @@ body {
 }
 .list-unstyled {
     padding-left: 20px;
+    text-align: left;
 }
 
 #sidebar.active {
@@ -423,9 +423,93 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
-    .navbar-expand-lg {
+    .nav{
+        width: 100%;
+        justify-content: flex-start;
+    }
+    a.navbar-brand { 
+        margin-right: 300px;
+    }
+    ul {
+        width: 100%;
+        vertical-align: middle;
+        text-align: center;
+    }
+    div .container-fluid {
+        width: 100px;
+        height: 50px;
+    }
+    .container-fluid {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: left;
+    }
+    
+}
+
+@media only screen and (min-width:800px) {
+    /* For tablets: */
+    .nav{
         width: 100%;
         justify-content: flex-start;
        
     }
-}
+    .container {
+      width: 80%;
+      padding: 0;
+    }
+    div .container-fluid {
+        width: 100px;
+        height: 50px;
+    }
+    .container-fluid {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: left;
+    }
+    
+
+  }
+  @media only screen and (max-width:500px) {
+    /* For mobile phones: */
+    .nav {
+        width: 100%;
+        justify-content: flex-start;
+       
+    }
+    .container {
+      width: 100%;
+    }
+    ul {
+        width: 100%;
+        vertical-align: middle;
+    }
+    div .container-fluid {
+        width: 100px;
+        height: 50px;
+    }
+    
+    .btn-outline-success {
+        width: 100px;
+        text-align: center;
+        margin: auto;
+    }
+    .container-fluid {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+    a.navbar-brand {
+        margin:auto;
+    }
+  }
+  
