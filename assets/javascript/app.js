@@ -55,7 +55,7 @@ function createNewsHeadline(node, item) {
     var textColumns = 9;
     if (item.urlToImage) {
         var divImg = document.createElement("div");
-        divImg.className = "headlineBlock col-sm-3 col-md-3 col-lg-3";
+        divImg.className = "headlineBlock col-sm-6 col-md-6 col-lg-6";
         var img = document.createElement("img");
         img.className = "headlineImg";
         img.src = item.urlToImage;
@@ -71,7 +71,7 @@ function createNewsHeadline(node, item) {
     headline.className = "headlineBlock col-sm-" + textColumns + "col-md-" + textColumns + " col-lg-" + textColumns;
  
     var titleText = document.createElement("div");
-    titleText.className = "titleTxt";
+    titleText.className = "headlineTitle";
     titleText.appendChild(document.createTextNode(item.title));
     
     var title = document.createElement("a");
@@ -82,13 +82,13 @@ function createNewsHeadline(node, item) {
 
     if (item.author) {
         var author = document.createElement("div");
-        author.className = "authorTxt";
+        author.className = "headlineAuthor";
         author.appendChild(document.createTextNode("by " + item.author));
         headline.appendChild(author);
     }
     
     var text = document.createElement("p");
-    text.className = "articleTxt";
+    text.className = "headlineArticle";
     createNewsContent(text, item);
     headline.appendChild(text);
     row.appendChild(headline);
@@ -114,7 +114,7 @@ function createNewsRow(node, items) {
 
 // Create news item element under the given node.
 function createNewsItem(node, item) {
-    var textColumns = 3;
+    var textColumns = 4;
     var div = document.createElement("div");
     div.className = "articleBlock col-sm-" + textColumns + "col-md-" + textColumns + " col-lg-" + textColumns;
     if (item.urlToImage) {
